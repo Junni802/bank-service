@@ -1,0 +1,9 @@
+# JWT ??
+jwt:
+  header: Authorization
+  secret: a2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9rYXJpbXRva2FyaW10b2thcmltdG9==
+  token_expiration_time: 86400000 # ttl (?)
+
+spring:
+  application:
+    name: bank-service
