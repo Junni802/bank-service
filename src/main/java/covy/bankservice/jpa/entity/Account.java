@@ -32,12 +32,11 @@ public class Account {
 
   private Long balance;
 
-  // 소유자
   @ManyToOne
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "user_id", nullable = false)
   private UserEntity owner;
 
-  // 계좌 유형 예: CHECKING, SAVINGS, etc.
   private String accountType;
 }
+
 

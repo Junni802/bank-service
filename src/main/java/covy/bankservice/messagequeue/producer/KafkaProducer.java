@@ -2,6 +2,7 @@ package covy.bankservice.messagequeue.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import covy.bankservice.dto.DepositNotificationDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -18,18 +19,18 @@ public class KafkaProducer {
     this.kafkaTemplate = kafkaTemplate;
   }
 
-  public OrderDto send(String topic, OrderDto orderDto) {
+  public DepositNotificationDto send(String topic, DepositNotificationDto depositNotificationDto) {
     ObjectMapper mapper = new ObjectMapper();
     String jsonInString = "";
     try {
-      jsonInString = mapper.writeValueAsString(orderDto);
+      jsonInString = mapper.writeValueAsString(depositNotificationDto);
     } catch (JsonProcessingException ex) {
       ex.printStackTrace();
     }
 
     kafkaTemplate.send(topic, jsonInString);
-    log.info("Kafka Producer sent data from the Order microservice : " + orderDto);
+    log.info("Kafka Producer sent data from the Order microservice : " + depositNotificationDto);
 
-    return orderDto;
+    return depositNotificationDto;
   }
 }

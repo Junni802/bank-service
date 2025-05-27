@@ -10,23 +10,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <클래스 설명>
- *
- * @author : junni802
- * @date : 2025-02-18
- */
-
-@Data
-@Getter
-@Setter
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
 public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,7 +27,6 @@ public class UserEntity {
     private String email;
 
     @Column(nullable = false, length = 50)
-
     private String name;
 
     @Column(nullable = false, unique = true)
@@ -44,51 +35,11 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String encryptedPwd;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String bankCode;
 
     private String contact;
 
-    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Account> accounts = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getEncryptedPwd() {
-        return encryptedPwd;
-    }
-
-    public void setEncryptedPwd(String encryptedPwd) {
-        this.encryptedPwd = encryptedPwd;
-    }
 }
