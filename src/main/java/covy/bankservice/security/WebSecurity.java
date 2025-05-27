@@ -43,7 +43,7 @@ public class WebSecurity {
             .requestMatchers("/actuator/**").permitAll()  // ← 이걸 꼭 추가
             .requestMatchers(WHITE_LIST).permitAll()
             .requestMatchers(new IpAddressMatcher("127.0.0.1")).permitAll()
-            .requestMatchers("/user-service/users/**").permitAll()
+            .requestMatchers("/users/**").permitAll()
             .anyRequest().denyAll()
         )
         .addFilter(getAuthentication());

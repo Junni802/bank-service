@@ -25,10 +25,10 @@ public class UserDto {
 
     private String userId;
 
+    private String contact;
+
     private Date createAt;
 
     private String encryptedPwd;
-
-    private List<ResponseOrder> orders;
 
 }

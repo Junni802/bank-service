@@ -1,5 +1,6 @@
 package covy.bankservice.service;
 
+import covy.bankservice.common.BankConstants;
 import covy.bankservice.dto.UserDto;
 import covy.bankservice.jpa.entity.UserEntity;
 import covy.bankservice.jpa.repository.UserRepository;
@@ -55,12 +56,20 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public UserDto createUser(UserDto userDto) {
+    String password = "mySecretKey";
     userDto.setUserId(UUID.randomUUID().toString());
 
     ModelMapper mapper = new ModelMapper();
     mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     UserEntity userEntity = mapper.map(userDto, UserEntity.class);
     userEntity.setEncryptedPwd(passwordEncoder.encode(userDto.getPwd()));
+
+    // Covy Bank이므로 임의로 변경 못하도록 하드코딩
+    userEntity.setBankCode(BankConstants.BANK_CODE_COVY);
+
+
+    log.info("인코딩된 비밀번호 값 -> " + userEntity.getEncryptedPwd());
+
 
     userRepository.save(userEntity);
 

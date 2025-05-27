@@ -28,4 +28,7 @@ public class RequestUser {
     @Size(min = 2, message = "Password not be less than two characters")
     private String pwd;
 
+    @NotNull(message = "Password cannot be null")
+    @Size(min = 2, message = "Password not be less than two characters")
+    private String contact;
 }

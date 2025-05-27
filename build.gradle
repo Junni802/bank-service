@@ -46,6 +46,10 @@ dependencies {
 
     // modelmapper
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+
+//     https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap
+//    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.5' // 예시 버전
+
 }
 
 tasks.named('test') {
