@@ -2,6 +2,7 @@ package covy.bankservice.messagequeue.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import covy.bankservice.dto.Field;
 import covy.orderservice.dto.Field;
 import covy.orderservice.dto.KafkaOrderDto;
 import covy.orderservice.dto.OrderDto;
