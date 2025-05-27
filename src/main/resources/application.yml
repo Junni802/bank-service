@@ -7,3 +7,35 @@ jwt:
 spring:
   application:
     name: bank-service
+
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+  datasource:
+    url: jdbc:mariadb://localhost:3306/mydb
+    driver-class-name: org.mariadb.jdbc.Driver
+    hikari:
+      username: root
+      password: test1357
+
+
+
+greeting:
+  message: Hello, this is user service ?
+
+server:
+  port: 8081
