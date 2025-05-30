@@ -35,8 +35,10 @@ public class BankProducer {
     kafkaTemplate.send("bank.deposit.notifications", payload)
         .whenComplete((result, ex) -> {
           if (ex != null) {
+            System.out.println("❌ Kafka 전송 실패: 직렬화 오류");
             log.error("❌ Kafka 전송 실패: 직렬화 오류", ex);
           } else {
+            System.out.println("💸 입금 알림 전송됨: {}");
             log.info("💸 입금 알림 전송됨: {}", payload);
           }
         });
