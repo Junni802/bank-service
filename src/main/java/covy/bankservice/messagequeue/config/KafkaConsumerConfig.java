@@ -1,5 +1,7 @@
 package covy.bankservice.messagequeue.config;
 
+import static org.apache.kafka.clients.consumer.ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG;
+
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -22,6 +24,11 @@ public class KafkaConsumerConfig {
     properties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumerGroupId");
     properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,  StringDeserializer.class);
+    // 자동 커밋을 활성화하여, 메시지 수신 시점에 오프셋이 커밋됨
+    properties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
+    // 자동 커밋 주기 (예: 1초)
+    properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
+    출처: https://curiousjinan.tistory.com/entry/kafka-message-delivery-guarantees [오늘도 개발중입니다:티스토리]
 
 
 
