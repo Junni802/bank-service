@@ -67,10 +67,6 @@ public class UserServiceImpl implements UserService {
     // Covy Bank이므로 임의로 변경 못하도록 하드코딩
     userEntity.setBankCode(BankConstants.BANK_CODE_COVY);
 
-
-    log.info("인코딩된 비밀번호 값 -> " + userEntity.getEncryptedPwd());
-
-
     userRepository.save(userEntity);
 
     UserDto map = mapper.map(userEntity, UserDto.class);

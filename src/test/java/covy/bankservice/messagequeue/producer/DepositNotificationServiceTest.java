@@ -1,19 +1,12 @@
 package covy.bankservice.messagequeue.producer;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 import covy.bankservice.jpa.entity.Account;
 import covy.bankservice.jpa.entity.UserEntity;
 import covy.bankservice.jpa.repository.UserRepository;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
-import org.springframework.kafka.test.utils.KafkaTestUtils;
 
 @EmbeddedKafka(partitions = 1, topics = "bank.deposit.notifications")
 @SpringBootTest
